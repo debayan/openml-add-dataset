@@ -4,6 +4,7 @@ import pandas as pd
 
 import openml
 from openml.datasets.functions import create_dataset
+openml.config.start_using_configuration_for_example()
 
 #dataset = load_dataset("awalesushil/DBLP-QuAD")
 #dblp = load_dataset("awalesushil/DBLP-QuAD", split="train")        
@@ -27,16 +28,16 @@ from openml.datasets.functions import create_dataset
 
 df = pd.read_json('data/dblp_1.json')
 
-print(df)
+#print(df)
 print(df.info())
-df['id'] = df['id'].astype('str')
-df['query_type'] = df['query_type'].astype('str')
-df['question'] = df['question'].astype('str')
-df['paraphrased_question'] = df['paraphrased_question'].astype('str')
-df['query'] = df['query'].astype('str')
-df['template_id'] = df['template_id'].astype('str')
-df['entities'] = df['entities'].astype('str')
-df['relations'] = df['relations'].astype('str')
+df['id'] = df['id'].astype('string')
+df['query_type'] = df['query_type'].astype('string')
+df['question'] = df['question'].astype('string')
+df['paraphrased_question'] = df['paraphrased_question'].astype('string')
+df['query'] = df['query'].astype('string')
+df['template_id'] = df['template_id'].astype('string')
+df['entities'] = df['entities'].astype('string')
+df['relations'] = df['relations'].astype('string')
 print(df.info())
 
 description = ("DBLP-QuAD is a scholarly question answering dataset over the DBLP knowledge graph. The dataset can also be found at https://zenodo.org/record/7643971 and https://huggingface.co/datasets/awalesushil/DBLP-QuAD. The paper can be found at https://arxiv.org/abs/2303.13351. The reference DBLP KG dump in .nt format can be found at https://zenodo.org/record/7638511.")
@@ -48,8 +49,6 @@ citation = ('''@misc{banerjee2023dblpquad,
       archivePrefix={arXiv},
       primaryClass={cs.DL}
 }''')
-
-
 
 dblp_dataset = create_dataset(
     name="DBLP-QuAD",
